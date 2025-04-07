@@ -31,3 +31,9 @@ jobs:
       run: source tools/ci.sh && ci_rp2_setup
     - name: Build
       run: source tools/ci.sh && ci_rp2_build
+    - name: Attach ELFs
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: ELFs
+        path: 'micropython repo/ports/rp2/build*/*.elf'
